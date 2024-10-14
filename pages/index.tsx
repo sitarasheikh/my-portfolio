@@ -1,115 +1,162 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+// import React, { useState, useEffect } from 'react'; // Make sure useEffect is imported
+// import Nav from './Components/Nav';
+// import MobileNav from './Components/MobileNav';
+// import Hero from './Components/Hero';
+// import About from './Components/About';
+// import Services from './Components/Services';
+// import Skills from './Components/Skills';
+// import Projects from './Components/Projects';
+// import Testimonial from './Components/Testimonial';
+// import Blog from './Components/Blog';
+// import Footer from './Components/Footer';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css'; 
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const HomePage = () => {
 
-export default function Home() {
+//   const [nav, setNav] = useState(false);
+//   const openNav = () => setNav(true);   // Open navigation
+//   const closeNav = () => setNav(false); // Close navigation
+
+//   // Animation AOS Setup
+//   useEffect(() => {
+//     AOS.init({
+//       // Global settings:
+//       disable: false, 
+//       startEvent: 'DOMContentLoaded', 
+//       initClassName: 'aos-init', 
+//       animatedClassName: 'aos-animate',
+//       useClassNames: false,
+//       disableMutationObserver: false,
+//       debounceDelay: 50, 
+//       throttleDelay: 99, 
+
+//       // Settings that can be overridden on per-element basis:
+//       offset: 120, 
+//       delay: 0,
+//       duration: 1000, 
+//       easing: 'ease', 
+//       once: false, 
+//       mirror: true, 
+//       anchorPlacement: 'top-bottom',
+       
+//     });
+//   }, []);
+
+//   return (
+//     <div className="overflow-x-hidden">
+//       <div>
+//         {/* Navbar */}
+//         <MobileNav nav={nav} closeNav={closeNav} />
+//         <Nav openNav={openNav} />
+
+//         {/* Hero Section */}
+//         <Hero />
+//         <div className='relative z-[30]'>
+//           {/* About */}
+//           <About />
+//           {/* Services */}
+//           <Services />
+//           {/* Skills */}
+//           <Skills />
+//           {/* Project */}
+//           <Projects />
+//           {/* Reviews Testimonial */}
+//           <Testimonial />
+//           {/* BLOGS */}
+//           <Blog />
+//           {/* Footer */}
+//           <Footer />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default HomePage;
+
+
+// 
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import Nav from './Components/Nav';
+import MobileNav from './Components/MobileNav';
+import Hero from './Components/Hero';
+import About from './Components/About';
+import Services from './Components/Services';
+import Skills from './Components/Skills';
+import Projects from './Components/Projects';
+import Testimonial from './Components/Testimonial';
+import Blog from './Components/Blog';
+import Footer from './Components/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+const HomePage = () => {
+  const [nav, setNav] = useState(false);
+
+  const openNav = () => setNav(true);   // Open mobile navigation
+  const closeNav = () => setNav(false); // Close mobile navigation
+
+  // Animation AOS Setup
+  useEffect(() => {
+    AOS.init({
+      // Global settings:
+      disable: false, 
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init', 
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50, 
+      throttleDelay: 99, 
+
+      // Settings that can be overridden on per-element basis:
+      offset: 120, 
+      delay: 0,
+      duration: 1000, 
+      easing: 'ease', 
+      once: false, 
+      mirror: true, 
+      anchorPlacement: 'top-bottom',
+    });
+  }, []);
+
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="overflow-x-hidden">
+      <div id="home">
+        {/* Mobile Navigation */}
+        {nav && <MobileNav nav={nav} closeNav={closeNav} />} 
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Navbar */}
+        <Nav openNav={openNav} />
+
+        {/* Hero Section */}
+        <Hero />
+        <div className="relative z-[30]">
+          {/* About */}
+          <About />
+          {/* Services */}
+          <Services />
+          {/* Skills */}
+          <Skills />
+          {/* Projects */}
+          <Projects />
+          {/* Testimonial */}
+          <Testimonial />
+          {/* Blog */}
+          <Blog />
+          {/* Footer */}
+          <Footer />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
-}
+};
+
+export default HomePage;
